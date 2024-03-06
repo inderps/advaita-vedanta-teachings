@@ -1,4 +1,27 @@
 baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = 'My New Hugo Site'
-theme = 'hugo-blog-awesome'
+theme = 'hugo-theme-nightfall'
+[menu]
+  [[menu.header]]
+    name = "blog"
+    weight = 0
+    url = "blog"
+  [[menu.header]]
+    name = "about"
+    weight = 1
+    url = "about"
+
+[params]
+user = "vedanta"
+hostname = "gohugo.io"
+  [params.author]
+    name = "Advaita Vedanta Teachings"
+
+readingTime = true  # Show reading time on post page
+published = true  # Show published data on post page
+
+[[params.social]]
+key = 0
+name = "youtube"
+url = "https://www.youtube.com/@upanishadswithswamiprabudd4019/streams"
