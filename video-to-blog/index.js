@@ -1,6 +1,7 @@
 require('dotenv').config({ path: '.env' });
 
 const { google, youtube_v3 } = require('googleapis');
+const { getSubtitles } = require('youtube-captions-scraper');
 
 const youtube = google.youtube({
 	version: 'v3',
@@ -19,43 +20,27 @@ const fetchVideos = async () => {
 }
 
 const getEnglishSubtitles = async (videoId) => {
-  try {
-    const captionsList = await youtube.captions.list({
-      part: ['snippet'],
-      videoId: videoId,
-    });
+  const subtitles = await getSubtitles({
+    videoID: videoId,
+    lang: 'en',
+  });
 
-    const englishCaption = captionsList.data.items.find(caption => caption.snippet.language === 'en' && caption.snippet.trackKind !== 'ASR');
-    if (!englishCaption) {
-      console.log('No English captions found.');
-      return '';
-    }
-
-    // Download the caption track
-    const captionsResponse = await youtube.captions.download({
-      id: englishCaption.id,
-      tfmt: 'vtt', // Use WebVTT format for easier handling in text.
-    }, {
-      responseType: 'stream'
-    });
-
-    return new Promise((resolve, reject) => {
-      let subtitles = '';
-      captionsResponse.data.on('data', (chunk) => {
-        subtitles += chunk.toString();
-      });
-      captionsResponse.data.on('end', () => {
-        resolve(subtitles);
-      });
-      captionsResponse.data.on('error', reject);
-    });
-  } catch (error) {
-    console.error('Error fetching English subtitles:', error);
-    return '';
-  }
+  return subtitles.map(subtitle => subtitle.text).join(' ');
 }
 
 
+const main = async () => {
+	// const videos = await fetchVideos();
+  // console.log(videos);
+  const subtitles = await getEnglishSubtitles('JDRuVsQTLnw');
+  console.log(subtitles);
+	// console.log(videos.map(video => ({ title: video.snippet.title, id: video.id.videoId })));
+	
+	// const subtitles = await getEnglishSubtitles('JDRuVsQTLnw');
+	// console.log(subtitles);
+}
+
+main();
 
 // const id = findChannelId('https://www.youtube.com/@upanishadswithswamiprabudd4019');
 async function findChannelId(channelName) {
@@ -78,13 +63,3 @@ async function findChannelId(channelName) {
     console.error('Error fetching channel ID:', error);
   }
 }
-
-const main = async () => {
-	// const videos = await fetchVideos();
-	// console.log(videos.map(video => ({ title: video.snippet.title, id: video.id.videoId })));
-	
-	const subtitles = await getEnglishSubtitles('JDRuVsQTLnw');
-	console.log(subtitles);
-}
-
-main();
