@@ -1,4 +1,7 @@
-https://inderps.github.io/advaita-vedanta-teachings/
++++
+title = "About"
+date = "2024-03-07"
++++
 
 # About This Blog
 
