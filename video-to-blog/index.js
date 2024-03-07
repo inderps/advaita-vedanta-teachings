@@ -67,6 +67,7 @@ const writeBlog = async (content, title, videoLink, date) => {
   title = "Bhagavad Gita: Day 6" \
   date = "2020-08-05" \
   +++ \
+  ### (Please remove this line and start writing your blog from here. After your blog, do mention the credits below) \
   ### Credits: \
   Learning extracted through subtitles and then articulated by ChatGPT  \
   * [Youtube Video](https://www.youtube.com/watch?v=RMCFMC7DOsA) \
@@ -106,7 +107,31 @@ const writeBlog = async (content, title, videoLink, date) => {
 
 const main = async () => {
 	const videos = await fetchVideos();
-  console.log(videos);
+
+  let count = 0;
+  for (const video of videos) {
+    if (!video.snippet.title.toLowerCase().includes('bhagavad gita')) {
+      continue;
+    }
+
+    console.log(`Fetching video: ${video.snippet.title}`);
+
+    try {
+      const subtitles = await getEnglishSubtitles(video.id.videoId);
+      await writeBlog(subtitles, video.snippet.title, `https://www.youtube.com/watch?v=${video.id.videoId}`, video.snippet.publishedAt);
+
+
+      if (count === 2) {
+        break;
+      }
+
+      count++;
+
+    } catch (error) {
+      console.error(`Error fetching video: ${video.snippet.title}`, error);
+    }
+  }
+
   // const subtitles = await getEnglishSubtitles('JDRuVsQTLnw');
   // await writeBlog(subtitles, 'Bhagavad Gita: Day 10', 'https://www.youtube.com/watch?v=assaSDjs', '2023-05-05');
   // console.log(subtitles);
