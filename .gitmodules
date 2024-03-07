@@ -1,3 +1,9 @@
 [submodule "themes/hugo-theme-nightfall"]
 	path = themes/hugo-theme-nightfall
 	url = https://github.com/LordMathis/hugo-theme-nightfall
+[submodule "themes/hugo-theme-texify"]
+	path = themes/hugo-theme-texify
+	url = https://github.com/queensferryme/hugo-theme-texify.git
+[submodule "themes/hugo-kiera"]
+	path = themes/hugo-kiera
+	url = https://github.com/funkydan2/hugo-kiera.git
