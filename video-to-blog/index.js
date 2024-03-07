@@ -1,5 +1,6 @@
-
-const { google, youtube_v3 } = require('googleapis');
+const fs = require('fs');
+const path = require('path');
+const { google } = require('googleapis');
 const { getSubtitles } = require('youtube-captions-scraper');
 const { OpenAI } = require('openai');
 
@@ -14,15 +15,40 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-const fetchVideos = async () => {
-	const response = await youtube.search.list({
-		part: ['snippet'],
-		channelId: 'UCssxbnFeTEDAZcwzL6saHCg',
-		maxResults: 100,
-		order: 'date',
-	});
+const videosFilePath = path.join(__dirname, 'videosData.json');
 
-	return response.data.items;
+const fetchAllVideos = async (channelId) => {
+  let allVideos = [];
+  let nextPageToken = '';
+
+  do {
+    const response = await youtube.search.list({
+      part: ['snippet'],
+      channelId: channelId,
+      maxResults: 50, // Max allowed value
+      order: 'date',
+      pageToken: nextPageToken,
+    });
+
+    allVideos = allVideos.concat(response.data.items);
+    nextPageToken = response.data.nextPageToken;
+  } while (nextPageToken);
+
+  return allVideos;
+};
+
+const fetchVideos = async () => {
+
+  if (fs.existsSync(videosFilePath)) {
+    const fileContent = fs.readFileSync(videosFilePath, 'utf8');
+    return JSON.parse(fileContent);
+  }
+
+  const allVideos = await fetchAllVideos('UCssxbnFeTEDAZcwzL6saHCg');
+
+  fs.writeFileSync(videosFilePath, JSON.stringify(allVideos, null, 2), 'utf8');
+
+  return allVideos;
 }
 
 const getEnglishSubtitles = async (videoId) => {
@@ -41,7 +67,6 @@ const writeBlog = async (content, title, videoLink, date) => {
   title = "Bhagavad Gita: Day 6" \
   date = "2020-08-05" \
   +++ \
-  ### Write blog here \
   ### Credits: \
   Learning extracted through subtitles and then articulated by ChatGPT  \
   * [Youtube Video](https://www.youtube.com/watch?v=RMCFMC7DOsA) \
@@ -80,10 +105,10 @@ const writeBlog = async (content, title, videoLink, date) => {
 
 
 const main = async () => {
-	// const videos = await fetchVideos();
-  // console.log(videos);
-  const subtitles = await getEnglishSubtitles('JDRuVsQTLnw');
-  await writeBlog(subtitles, 'Bhagavad Gita: Day 10', 'https://www.youtube.com/watch?v=assaSDjs', '2023-05-05');
+	const videos = await fetchVideos();
+  console.log(videos);
+  // const subtitles = await getEnglishSubtitles('JDRuVsQTLnw');
+  // await writeBlog(subtitles, 'Bhagavad Gita: Day 10', 'https://www.youtube.com/watch?v=assaSDjs', '2023-05-05');
   // console.log(subtitles);
 	// console.log(videos.map(video => ({ title: video.snippet.title, id: video.id.videoId })));
 	
