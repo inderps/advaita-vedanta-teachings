@@ -1,8 +1,7 @@
 +++
 author = "ChatGPT Generated"
 title = "Bhagavad Gita: Day 6"
-date = "2024-03-06"
-description = "Day 6"
+date = "2020-08-05"
 +++
 
 ### Vedanta: Liberating Wisdom Beyond Attachment and Form

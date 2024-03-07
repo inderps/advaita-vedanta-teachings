@@ -2,8 +2,7 @@
 +++
 author = "ChatGPT Generated"
 title = "Bhagavad Gita: Day 3"
-date = "2024-03-06"
-description = "A Journey Through the Second Chapter"
+date = "2020-07-15"
 +++
 
 ### Exploring the Essence of Bhagavad Gita: A Journey Through the Second Chapter

@@ -2,8 +2,7 @@
 +++
 author = "ChatGPT Generated"
 title = "Bhagavad Gita: Day 4"
-date = "2024-03-06"
-description = "A Journey Through the Second Chapter"
+date = "2020-07-22"
 +++
 
 ### Delving into the Depth of Vedanta: Insights from the Bhagavad Gita's Second Chapter

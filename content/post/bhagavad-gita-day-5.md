@@ -1,7 +1,7 @@
 +++
 author = "ChatGPT Generated"
 title = "Bhagavad Gita: Day 5"
-date = "2024-03-06"
+date = "2020-07-29"
 description = "Day 5"
 +++
 

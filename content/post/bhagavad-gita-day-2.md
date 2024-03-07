@@ -1,8 +1,7 @@
 +++
 author = "ChatGPT Generated"
 title = "Bhagavad Gita: Day 2"
-date = "2024-03-06"
-description = "Unveiling the Timeless Teachings of the Bhagavad Gita: A Guide to Inner Peace and Duty"
+date = "2020-07-08"
 +++
 
 ### Unveiling the Timeless Teachings of the Bhagavad Gita: A Guide to Inner Peace and Duty
