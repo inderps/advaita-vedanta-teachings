@@ -102,6 +102,8 @@ const writeBlog = async (content, title, videoLink, date) => {
   const responseText = completion.choices[0].message.content?.trim();
 
   console.log(responseText);
+
+  return responseText;
 }
 
 
@@ -109,8 +111,16 @@ const main = async () => {
 	const videos = await fetchVideos();
 
   let count = 0;
-  for (const video of videos) {
+  for (const video of videos.reverse()) {
     if (!video.snippet.title.toLowerCase().includes('bhagavad gita')) {
+      continue;
+    }
+
+    // SHRIMAD BHAGAVAD GITA - DAY 60
+    const words = video.snippet.title.split(' ');
+    const day = parseInt(words[words.length - 1]);
+
+    if (day < 10) {
       continue;
     }
 
@@ -118,10 +128,11 @@ const main = async () => {
 
     try {
       const subtitles = await getEnglishSubtitles(video.id.videoId);
-      await writeBlog(subtitles, video.snippet.title, `https://www.youtube.com/watch?v=${video.id.videoId}`, video.snippet.publishedAt);
+      const blog = await writeBlog(subtitles, video.snippet.title, `https://www.youtube.com/watch?v=${video.id.videoId}`, video.snippet.publishedAt);
+      const blogPath = path.join(__dirname, `blogs/${video.snippet.title}.md`);
+      fs.writeFileSync(blogPath, blog, 'utf8');
 
-
-      if (count === 2) {
+      if (count === 5) {
         break;
       }
 
