@@ -120,7 +120,7 @@ const main = async () => {
     const words = video.snippet.title.split(' ');
     const day = parseInt(words[words.length - 1]);
 
-    if (day < 8) {
+    if (day < 11) {
       continue;
     }
 
@@ -132,7 +132,7 @@ const main = async () => {
       const blogPath = path.join(__dirname, `blogs/${video.snippet.title}.md`);
       fs.writeFileSync(blogPath, blog, 'utf8');
 
-      if (count === 5) {
+      if (count === 8) {
         break;
       }
 
