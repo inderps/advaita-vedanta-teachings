@@ -1,0 +1,25 @@
++++
+author = "ChatGPT Generated"
+title = "SHRIMAD BHAGAVAD GITA - DAY 67"
+date = "2022-02-16T04:52:51Z"
++++
+
+The exploration of knowledge and understanding in various fields, whether it's through modern education, language studies like Sanskrit, or even the specialized education required to become a doctor, is universally considered a pursuit of knowledge. However, what often gets overlooked is the distinction between what is traditionally known as 'apara vidya' (lower knowledge) and 'para vidya' (higher knowledge). The focus of lower knowledge is on the material world and its functionalities, including the body, the objects around us, and their operating laws, be it in physics or chemistry. This kind of knowledge, as extensive and useful as it may seem, is rooted in 'avidya'—ignorance, as it deals primarily with the empirical or the material aspect of existence, not touching upon the essence of our true self, the soul.
+
+This realization isn't meant to undermine the value of modern education but to highlight that the ultimate satisfaction for a human being lies not in empirical knowledge but in 'gyanam' and 'vijnana'—the knowledge of the scriptures and the self-realization or knowledge of the soul, respectively. The scriptures provide the framework, the 'pramanam' (evidence or means of knowledge), where the 'atma' (soul) is the subject. The remarkable aspect of this understanding is the realization that our existence isn't defined by our physical forms or the material acquisitions, but by our 'satchidananda' nature—existence, consciousness, and bliss. This is the essence that remains constant and changeless amidst the ever-changing physical realm.
+
+Self-control and mental peace are often spoken of in the context of personal growth and spiritual development. Yet, their true value is only appreciated when one embarks on the journey of 'Brahmavidya'—the knowledge of the Absolute. This spiritual path isn't about physical attributes or ascetic measures; rather, it's about understanding the truth of our existence. A person deeply rooted in the search for this truth begins to perceive the world differently. They see the same spiritual essence in a lump of clay, a stone, and gold—a representation of non-duality that transcends the apparent differences and values assigned to these objects in the material world.
+
+This profound understanding extends further to realizing that every individual, regardless of their empirical roles in the world (such as a doctor), embodies the same spiritual value—their essence is 'Brahman,' the ultimate reality. This perspective fosters a non-discriminative view towards life and its manifestations. One who genuinely grasps this concept transcends the need for material accumulation, as they realize that everything in existence, being a manifestation of the divine, is intrinsically linked to their being.
+
+Living a contemplative life, therefore, isn't confined to a secluded place or a specific lifestyle. It's about cultivating mental tranquility and directing one's focus towards the understanding of the self and the Absolute truth. This approach encourages living in the present, shedding concerns about the past or the future, and fostering an acute awareness of our existence beyond the physical form. Such a life is characterized by a profound sense of purpose aimed at self-realization and the recognition of the universal essence in all beings.
+
+The teachings of the Bhagavad Gita and the scriptures call for an introspective journey—a discernment between the empirical (name and form) and the spiritual (essence and being). This discernment, 'vichara,' is essential for spiritual liberation. The true essence of self-inquiry lies in understanding that one's existence is not tied to the material accumulations or achievements but is deeply rooted in the spiritual reality that pervades all forms of life.
+
+In conclusion, the pursuit of knowledge and self-control are deeply spiritual endeavors that transcend the materialistic understanding of life. They beckon an inner journey towards self-realization, where one learns to discern between the transient and the eternal. This understanding fosters a life of simplicity, non-accumulation, and a profound appreciation for the fundamental unity of existence. The essence of being, 'Sat,' remains the focal point of a contemplative life, guiding one towards the ultimate truth of non-duality, where the individual soul ('atman') realizes its oneness with the universal soul ('Brahman'). Such is the journey outlined in the Bhagavad Gita, a timeless guide towards self-realization and spiritual liberation.
+
+### Credits:
+Learning extracted through subtitles and then articulated by ChatGPT
+
+* [Youtube Video](https://www.youtube.com/watch?v=uYp9xV-hP9o)
+* [Swami Prabuddhananda](https://www.youtube.com/@upanishadswithswamiprabudd4019/streams)

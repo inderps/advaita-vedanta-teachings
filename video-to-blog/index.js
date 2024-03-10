@@ -106,6 +106,20 @@ const writeBlog = async (content, title, videoLink, date) => {
   return responseText;
 }
 
+const fetchSubtitlesAndWriteBlog = async (video) => {
+  console.log(`Fetching video: ${video.snippet.title}`);
+
+  try {
+    const subtitles = await getEnglishSubtitles(video.id.videoId);
+    const blog = await writeBlog(subtitles, video.snippet.title, `https://www.youtube.com/watch?v=${video.id.videoId}`, video.snippet.publishedAt);
+    const blogPath = path.join(__dirname, `blogs/${video.snippet.title}.md`);
+    fs.writeFileSync(blogPath, blog, 'utf8');
+
+  } catch (error) {
+    console.error(`Error fetching video: ${video.snippet.title}`, error);
+  }
+}
+
 
 const main = async () => {
 	const videos = await fetchVideos();
@@ -120,26 +134,16 @@ const main = async () => {
     const words = video.snippet.title.split(' ');
     const day = parseInt(words[words.length - 1]);
 
-    if (day < 54) {
+    if (day < 65) {
       continue;
     }
 
-    console.log(`Fetching video: ${video.snippet.title}`);
+    await fetchSubtitlesAndWriteBlog(video);
 
-    try {
-      const subtitles = await getEnglishSubtitles(video.id.videoId);
-      const blog = await writeBlog(subtitles, video.snippet.title, `https://www.youtube.com/watch?v=${video.id.videoId}`, video.snippet.publishedAt);
-      const blogPath = path.join(__dirname, `blogs/${video.snippet.title}.md`);
-      fs.writeFileSync(blogPath, blog, 'utf8');
+    count++;
 
-      if (count === 8) {
-        break;
-      }
-
-      count++;
-
-    } catch (error) {
-      console.error(`Error fetching video: ${video.snippet.title}`, error);
+    if (count === 8) {
+      break;
     }
   }
 
