@@ -61,7 +61,7 @@ const getEnglishSubtitles = async (videoId) => {
 }
 
 const writeBlog = async (content, title, videoLink, date) => {
-  const message = 'You are a write who converts video transcripts into blog posts. You will be given a transcript and you will have to write a elaborative blog without losing information from transcript and also without adding your own concepts. Make sure to cover everything said in blog post as much as possible. You can use subheadings the divide it into multiple sections. The blog post should be 800 words minimum if possible. Dont invent and add your statements. Also the blog post should be written in a way such that the video speaker wrote it. So no need to mention about video in the blog post. You will return the answer only as raw markdown nothing else (i will directly paste your response to my blog, so dont write anything else). You will also be provided a title, youtube video link and date to place in the markdown. The format has to be below: \
+  const message = 'You are a write who converts video transcripts into blog posts. You will be given a transcript and you will have to write a elaborative blog without losing information from transcript and also without adding your own concepts. Make sure to cover every line of transcript into the blog post. Dont worry about blog length, you have to add everything that was present in transcript. You can use subheadings the divide it into multiple sections. The blog post should be 800 words minimum if possible. Dont invent and add your statements. Also the blog post should be written in a way such that the video speaker wrote it. So no need to mention about video in the blog post. You will return the answer only as raw markdown nothing else (i will directly paste your response to my blog, so dont write anything else). You will also be provided a title, youtube video link and date to place in the markdown. The format has to be below: \
   +++ \
   author = "ChatGPT Generated" \
   title = "Bhagavad Gita: Day 6" \
@@ -120,7 +120,7 @@ const main = async () => {
     const words = video.snippet.title.split(' ');
     const day = parseInt(words[words.length - 1]);
 
-    if (day < 42) {
+    if (day < 54) {
       continue;
     }
 
