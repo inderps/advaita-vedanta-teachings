@@ -3,6 +3,7 @@ const path = require('path');
 const { google } = require('googleapis');
 const { getSubtitles } = require('youtube-captions-scraper');
 const { OpenAI } = require('openai');
+const { bhagavadGitaVideos } = require('./topics');
 
 require('dotenv').config({ path: '.env' });
 
@@ -60,19 +61,7 @@ const getEnglishSubtitles = async (videoId) => {
   return subtitles.map(subtitle => subtitle.text).join(' ');
 }
 
-const writeBlog = async (content, title, videoLink, date) => {
-  const message = 'You are a write who converts video transcripts into blog posts. You will be given a transcript and you will have to write a elaborative blog without losing information from transcript and also without adding your own concepts. Make sure to cover every line of transcript into the blog post. Dont worry about blog length, you have to add everything that was present in transcript. You can use subheadings the divide it into multiple sections. The blog post should be 800 words minimum if possible. Dont invent and add your statements. Also the blog post should be written in a way such that the video speaker wrote it. So no need to mention about video in the blog post. You will return the answer only as raw markdown nothing else (i will directly paste your response to my blog, so dont write anything else). You will also be provided a title, youtube video link and date to place in the markdown. The format has to be below: \
-  +++ \
-  author = "ChatGPT Generated" \
-  title = "Bhagavad Gita: Day 6" \
-  date = "2020-08-05" \
-  +++ \
-  ### (Please remove this line and start writing your blog from here. After your blog, do mention the credits below) \
-  ### Credits: \
-  Learning extracted through subtitles and then articulated by ChatGPT  \
-  * [Youtube Video](https://www.youtube.com/watch?v=RMCFMC7DOsA) \
-  * [Swami Prabuddhananda](https://www.youtube.com/@upanishadswithswamiprabudd4019/streams) \
-';
+const writeBlog = async (message, content, title, videoLink, date) => {
   const completion = await openai.chat.completions.create({
     messages: [
       {
@@ -106,12 +95,12 @@ const writeBlog = async (content, title, videoLink, date) => {
   return responseText;
 }
 
-const fetchSubtitlesAndWriteBlog = async (video) => {
+const fetchSubtitlesAndWriteBlog = async (video, message) => {
   console.log(`Fetching video: ${video.snippet.title}`);
 
   try {
     const subtitles = await getEnglishSubtitles(video.id.videoId);
-    const blog = await writeBlog(subtitles, video.snippet.title, `https://www.youtube.com/watch?v=${video.id.videoId}`, video.snippet.publishedAt);
+    const blog = await writeBlog(message, subtitles, video.snippet.title, `https://www.youtube.com/watch?v=${video.id.videoId}`, video.snippet.publishedAt);
     const blogPath = path.join(__dirname, `blogs/${video.snippet.title}.md`);
     fs.writeFileSync(blogPath, blog, 'utf8');
 
@@ -126,7 +115,7 @@ const main = async () => {
 
   let count = 0;
   for (const video of videos.reverse()) {
-    if (!video.snippet.title.toLowerCase().includes('bhagavad gita')) {
+    if (!video.snippet.title.toLowerCase().includes(bhagavadGitaVideos.comparisonString)) {
       continue;
     }
 
@@ -134,11 +123,11 @@ const main = async () => {
     const words = video.snippet.title.split(' ');
     const day = parseInt(words[words.length - 1]);
 
-    if (day < 71) {
+    if (day < 80) {
       continue;
     }
 
-    await fetchSubtitlesAndWriteBlog(video);
+    await fetchSubtitlesAndWriteBlog(video, bhagavadGitaVideos.message);
 
     count++;
 
