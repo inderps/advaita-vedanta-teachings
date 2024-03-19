@@ -123,7 +123,7 @@ const main = async () => {
     const words = video.snippet.title.split(' ');
     const day = parseInt(words[words.length - 1]);
 
-    if (day < 80) {
+    if (day < 89) {
       continue;
     }
 
@@ -131,7 +131,7 @@ const main = async () => {
 
     count++;
 
-    if (count === 10) {
+    if (count === 15) {
       break;
     }
   }
